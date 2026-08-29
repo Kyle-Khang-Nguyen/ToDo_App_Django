@@ -1,0 +1,12 @@
+# Datenbank nicht hochladen (enthält Passwörter/Lokale Daten)
+*.sqlite3
+db.sqlite3
+
+# Virtuelle Umgebung ignorieren
+venv/
+.venv/
+
+# Sensible Einstellungen & Caches
+*.pyc
+__pycache__/
+.env
