@@ -1,0 +1,14 @@
+<!-- tasks/templates/tasks/list.html -->
+<h1>Meine To-Do-Liste</h1>
+<button onclick="window.location.href='/create/'">Neue Aufgabe erstellen</button>
+
+<ul>
+  {% for task in tasks %}
+    <li>
+      {{ task.title }} 
+      <a href="/delete/{{ task.id }}/">Löschen</a>
+    </li>
+  {% empty %}
+    <li>Keine Aufgaben vorhanden.</li>
+  {% endfor %}
+</ul>

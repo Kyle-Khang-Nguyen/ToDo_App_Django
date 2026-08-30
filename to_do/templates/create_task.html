@@ -1,0 +1,15 @@
+<h1>Neue Aufgabe erstellen</h1>
+<form method="post">
+  {% csrf_token %}
+  <label for="title">Titel:</label>
+  <input type="text" id="title" name="title" required>
+  <br>
+  <label for="description">Beschreibung:</label>
+  <textarea id="description" name="description"></textarea>
+  <br>
+  <label for="deadline">Deadline:</label>
+  <input type="date" id="deadline" name="deadline">
+  <input type="time" id="deadline_time" name="deadline_time">
+  <br>
+  <button type="submit">Aufgabe erstellen</button>
+</form>
