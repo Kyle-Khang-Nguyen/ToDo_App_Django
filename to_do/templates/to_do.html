@@ -5,7 +5,8 @@
 <ul>
   {% for task in tasks %}
     <li>
-      {{ task.title }} 
+        <a href="{% url 'update_task' task.id %}">{{ task.title }} </a>
+
       <a href="/delete/{{ task.id }}/">Löschen</a>
     </li>
   {% empty %}

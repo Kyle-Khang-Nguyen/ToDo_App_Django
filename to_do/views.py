@@ -10,7 +10,7 @@ def create_task(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         description = request.POST.get('description')
-        deadline = request.POST.get('deadline')
+        deadline = request.POST.get('deadline') or None
 
         ToDo.objects.create(title=title, description=description, deadline=deadline)
         return redirect('task_list')
@@ -21,3 +21,16 @@ def delete_task(request, task_id):
     task = ToDo.objects.get(id=task_id)
     task.delete()
     return redirect('task_list')
+
+def update_task(request, task_id):
+    task = ToDo.objects.get(id=task_id)
+
+    if request.method == 'POST':
+        task.title = request.POST.get('title')
+        task.description = request.POST.get('description')
+        task.deadline = request.POST.get('deadline')
+        task.completed = 'completed' in request.POST
+        task.save()
+        return redirect('task_list')
+
+    return render(request, 'update_task.html', {'task': task})
