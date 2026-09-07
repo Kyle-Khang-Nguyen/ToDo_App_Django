@@ -43,3 +43,9 @@ def update_task(request, task_id):
         return redirect('task_list')
 
     return render(request, 'update_task.html', {'task': task})
+
+def toggle_task_completion(request, task_id):
+    task = ToDo.objects.get(id=task_id)
+    task.completed = not task.completed
+    task.save()
+    return redirect('task_list')
