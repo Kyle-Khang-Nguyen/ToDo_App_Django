@@ -6,9 +6,8 @@
   {% for task in tasks %}
     <li>
         <a href="{% url 'update_task' task.id %}">{{ task.title }} </a>
-
-      <a href="/delete/{{ task.id }}/">Löschen</a>
-      <input type="checkbox" {% if task.completed %}checked{% endif %} onchange="window.location.href='/toggle/{{ task.id }}/'">
+        <input type="checkbox" {% if task.completed %}checked{% endif %} onchange="window.location.href='/toggle/{{ task.id }}/'">
+        <button onclick="window.location.href"="/delete/{{ task.id }}/">Löschen</button>
     </li>
   {% empty %}
     <li>Keine Aufgaben vorhanden.</li>
