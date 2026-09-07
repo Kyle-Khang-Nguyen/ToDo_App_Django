@@ -28,7 +28,7 @@ def update_task(request, task_id):
     if request.method == 'POST':
         task.title = request.POST.get('title')
         task.description = request.POST.get('description')
-        task.deadline = request.POST.get('deadline')
+        task.deadline = request.POST.get('deadline') or None
         task.completed = 'completed' in request.POST
         task.save()
         return redirect('task_list')

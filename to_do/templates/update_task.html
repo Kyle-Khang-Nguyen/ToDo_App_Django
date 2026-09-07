@@ -8,9 +8,7 @@
   <textarea id="description" name="description">{{ task.description }}</textarea>
   <br>
   <label for="deadline">Deadline:</label>
-  <input type="date" id="deadline" name="deadline" value="{{ task.deadline }}">
-  <br>
-  <input type="time" id="deadline_time" name="deadline_time" value="{{ task.deadline|date:'H:i' }}">
+  <input type="datetime-local" id="deadline" name="deadline" value="{{ task.deadline|date:'Y-m-d\TH:i' }}">
   <br>
   <button type="submit">Aufgabe speichern</button>
 </form>
