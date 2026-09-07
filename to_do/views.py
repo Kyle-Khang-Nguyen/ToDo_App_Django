@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import ToDo
+from django.utils.dateparse import parse_datetime
 
 # Create your views here.
 def task_list(request):
@@ -10,7 +11,11 @@ def create_task(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         description = request.POST.get('description')
-        deadline = request.POST.get('deadline') or None
+        deadline_string = request.POST.get('deadline')
+        if deadline_string:
+            deadline = parse_datetime(deadline_string)
+        else:
+            deadline = None
 
         ToDo.objects.create(title=title, description=description, deadline=deadline)
         return redirect('task_list')
@@ -28,7 +33,11 @@ def update_task(request, task_id):
     if request.method == 'POST':
         task.title = request.POST.get('title')
         task.description = request.POST.get('description')
-        task.deadline = request.POST.get('deadline') or None
+        deadline_string = request.POST.get('deadline')
+        if deadline_string:
+            task.deadline = parse_datetime(deadline_string)
+        else:
+            task.deadline = None
         task.completed = 'completed' in request.POST
         task.save()
         return redirect('task_list')
