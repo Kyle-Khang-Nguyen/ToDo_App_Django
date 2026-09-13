@@ -1,0 +1,15 @@
+<h1>Aufgabe bearbeiten</h1>
+<form method="post">
+  {% csrf_token %}
+  <label for="title">Titel:</label>
+  <input type="text" id="title" name="title" value="{{ task.title }}" required>
+  <br>
+  <label for="description">Beschreibung:</label>
+  <textarea id="description" name="description">{{ task.description }}</textarea>
+  <br>
+  <label for="deadline">Deadline:</label>
+  <input type="datetime-local" id="deadline" name="deadline" value="{{ task.deadline|date:'Y-m-d\TH:i' }}">
+  <br>
+  <button type="submit">Aufgabe speichern</button>
+  <button type="button" onclick="window.location.href='/cancel/'">Abbrechen</button>
+</form>
