@@ -49,3 +49,6 @@ def toggle_task_completion(request, task_id):
     task.completed = not task.completed
     task.save()
     return redirect('task_list')
+
+def cancel_task(request, ignored=None):
+    return redirect('task_list')
